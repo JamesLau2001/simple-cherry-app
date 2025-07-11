@@ -1,0 +1,51 @@
+body{
+    text-align:center
+}
+
+.navigation-bar{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align:center
+}
+
+h1{
+    grid-column-start: 1;
+}
+
+.projects, .home-page{
+    grid-column-start: 2;
+    padding:2em;
+    
+}
+
+.showcase{
+    grid-column-start: 3;
+    padding:2em
+}
+
+img:hover {
+    /* box-shadow: 0 0 0 4px #8fd898, 0 8px 24px rgba(68, 219, 86, 0.6); */
+    transition: box-shadow 0.5s
+}
+
+img {
+    width:200px;
+    max-width:100%;
+    height:auto;
+    border: 2px solid
+}
+
+.border{
+    border: solid;
+    background: white;
+    padding: 1rem
+}
+
+@media(max-width: 768px){
+    .navigation-bar {
+        grid-template-columns: 1fr;
+    }
+    .projects, .showcase {
+        grid-column-start: auto;
+    }
+}

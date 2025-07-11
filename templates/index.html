@@ -1,0 +1,31 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css">
+        <title>My e-Portfolio</title>
+    </head>
+    <body id="body">      
+        <div class="border">
+            <div class="navigation-bar">
+            <h1>James Lau</h1>
+            <a class="projects" href="{{ link_url1 }}">My Projects</a>
+            <a class="showcase" href="{{ link_url }}">Show Case Sneak Peek</a>
+        </div>
+        <article>
+            <p>Hi, I'm James</p>
+            <img id="pic-of-me" src="/static/me.jpeg">  
+        </article>
+        <div>
+            <p>Colour Picker: Choose a colour for the background</p>
+            <input id="color-picker" type="color">
+        </div>
+        </div>
+        
+    </body>
+    <script>
+        document.getElementById("color-picker").addEventListener("change",(event)=>{
+            document.getElementById("body").style.background = document.getElementById("color-picker").value
+        })
+    </script>
+    </html>
