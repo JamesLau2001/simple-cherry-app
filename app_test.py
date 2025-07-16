@@ -15,13 +15,16 @@ def test_index():
     app = make_app()
     response = app.get('/')
     assert response.status_code == 200
+    assert "Hi, I'm James" in response.text
 
 def test_showcase():
     app = make_app()
     response = app.get('/showcase')
     assert response.status_code == 200
+    assert "Showcase Sneak Peek" in response.text
 
 def test_projects():
     app = make_app()
     response = app.get('/projects')
     assert response.status_code == 200
+    assert "My Projects" in response.text
