@@ -1,0 +1,8 @@
+__pcache__
+.github
+.pytest_cache
+bin
+include
+lib
+pyvenv.cfg
+app_test.py
