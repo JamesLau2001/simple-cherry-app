@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
@@ -37,3 +37,24 @@ jobs:
     - name: Test with pytest
       run: |
         pytest app_test.py
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+      - name: Deploy to EC2 with SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ~/simple-cherry-app || git clone https://github.com/JamesLau2001/simple-cherry-app
+            cd ~/simple-cherry-app
+            git pull origin main
+            docker build -t simple-cherry:latest .
+            docker stop simple-cherry || true
+            docker rm simple-cherry || true
+            docker run -d --name simple-cherry -p 8080:8080 simple-cherry:latest
+  
