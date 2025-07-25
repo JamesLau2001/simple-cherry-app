@@ -53,8 +53,8 @@ jobs:
             cd ~/simple-cherry-app || git clone https://github.com/JamesLau2001/simple-cherry-app
             cd ~/simple-cherry-app
             git pull origin main
-            docker build -t simple-cherry:latest .
-            docker stop simple-cherry || true
-            docker rm simple-cherry || true
-            docker run -d --name simple-cherry -p 8080:8080 simple-cherry:latest
+            docker build -t test:latest .
+            docker stop test || true
+            docker rm test || true
+            docker run -d --name test -p 8080:8080 test:latest
   
